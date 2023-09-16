@@ -5,6 +5,8 @@ import com.mecanica.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClienteService {
 
@@ -18,5 +20,11 @@ public class ClienteService {
         Cliente novoCliente = clienteRepository.save(clienteModel);
 
         return novoCliente;
+    }
+
+    public List<Cliente> getAll() {
+        List<Cliente> clienteList = clienteRepository.findAll();
+
+        return clienteList;
     }
 }

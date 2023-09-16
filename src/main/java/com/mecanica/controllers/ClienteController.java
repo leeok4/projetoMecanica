@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -18,8 +20,8 @@ public class ClienteController {
     }
 
     @GetMapping("/")
-    public String getAllClientes(){
-        return "API FUNCIONANDO BY DIEGUITOLABAR";
+    public List<Cliente> getAllClientes(){
+        return clienteService.getAll();
     }
 
     @PostMapping("/")

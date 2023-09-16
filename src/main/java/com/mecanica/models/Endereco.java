@@ -101,13 +101,11 @@ public class Endereco {
         this.cep = cep;
     }
 
-    // Getter para o campo tipo
     @JsonValue
     public TipoEndereco getTipo() {
         return tipo;
     }
 
-    // Setter para o campo tipo
     public void setTipo(TipoEndereco tipo) {
         this.tipo = tipo;
     }
