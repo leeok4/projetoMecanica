@@ -3,7 +3,7 @@ package com.mecanica.models;
 import jakarta.persistence.*;
 
 @Entity
-public class ClienteModel {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,14 +12,14 @@ public class ClienteModel {
     private Long cpf;
     private String email;
     private String telefone;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "enderecoId", nullable = false)
-    private EnderecoModel endereco;
+    private Endereco endereco;
 
-    public ClienteModel() {
+    public Cliente() {
     }
 
-    public ClienteModel(Long id, String nome, Long cpf, String email, String telefone, EnderecoModel endereco) {
+    public Cliente(Long id, String nome, Long cpf, String email, String telefone, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -68,11 +68,11 @@ public class ClienteModel {
         this.telefone = telefone;
     }
 
-    public EnderecoModel getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(EnderecoModel endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }

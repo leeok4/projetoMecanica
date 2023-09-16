@@ -1,10 +1,12 @@
 package com.mecanica.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.mecanica.enums.TipoEndereco;
 import jakarta.persistence.*;
 
 @Entity
-public class EnderecoModel {
+public class Endereco {
 
 
     @Id
@@ -17,8 +19,23 @@ public class EnderecoModel {
     private String uf;
     private int numero;
     private String cep;
-    private Enum<TipoEndereco> tipo;
+    private TipoEndereco tipo;
 
+    public Endereco() {
+    }
+
+    @JsonCreator
+    public Endereco(Long id, String logradouro, String complemento, String bairro, String localidade, String uf, int numero, String cep, TipoEndereco tipo) {
+        this.id = id;
+        this.logradouro = logradouro;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.localidade = localidade;
+        this.uf = uf;
+        this.numero = numero;
+        this.cep = cep;
+        this.tipo = tipo;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -84,11 +101,14 @@ public class EnderecoModel {
         this.cep = cep;
     }
 
-    public Enum<TipoEndereco> getTipo() {
+    // Getter para o campo tipo
+    @JsonValue
+    public TipoEndereco getTipo() {
         return tipo;
     }
 
-    public void setTipo(Enum<TipoEndereco> tipo) {
+    // Setter para o campo tipo
+    public void setTipo(TipoEndereco tipo) {
         this.tipo = tipo;
     }
 }

@@ -1,21 +1,31 @@
 package com.mecanica.controllers;
 
-import com.mecanica.models.ClienteModel;
-import com.mecanica.repositories.ClienteRepository;
+import com.mecanica.models.Cliente;
+import com.mecanica.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
 
+    private final ClienteService clienteService;
+
     @Autowired
-    private ClienteRepository clienteRepository;
+    public ClienteController(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @GetMapping("/")
     public String getAllClientes(){
         return "API FUNCIONANDO BY DIEGUITOLABAR";
     }
+
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cliente createCliente(@RequestBody Cliente clienteModel){
+        return clienteService.cadastrarCliente(clienteModel);
+    }
+
 }
