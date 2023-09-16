@@ -4,9 +4,9 @@ Nessa atividade realizaremos um programa para agendamento de serviços focado em
 
 O projeto vai contar com:
 
-- Organização de agendas
-- Agendamento de serviços
 - Cadastro de veiculos
 - Cadastro de clientes
+- Cadastro de serviços
+- Organização de agendas
+- Agendamento de serviços
 - Lembre-me (Opção para serviços recorrentes e fidelização de clientes)
-- 
