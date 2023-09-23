@@ -21,11 +21,19 @@ public class VeiculoService {
         return veiculoRepository.findAll();
     }
 
-    public Veiculo cadastrarVeiculo(Veiculo veiculoModel) {
-        return veiculoRepository.save(veiculoModel);
+    public Veiculo cadastrarVeiculo(Veiculo veiculo) {
+        return veiculoRepository.save(veiculo);
     }
 
     public void deletarVeiculo(Long id) {
         veiculoRepository.deleteById(id);
+    }
+
+    public Veiculo atulizarVeiculo(Veiculo veiculo) {
+        return veiculoRepository.save(veiculo);
+    }
+
+    public Veiculo findByPlaca(String placa) {
+        return veiculoRepository.findByPlaca(placa);
     }
 }

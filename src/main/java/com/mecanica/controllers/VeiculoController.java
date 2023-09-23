@@ -25,15 +25,27 @@ public class VeiculoController {
         return veiculoService.getAll();
     }
 
+    @GetMapping("/{placa}")
+    @ResponseStatus(HttpStatus.OK)
+    public Veiculo getByPlaca(@PathVariable("placa") String placa) {
+        return veiculoService.findByPlaca(placa);
+    }
+
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
-    public Veiculo createVeiculo(@RequestBody Veiculo veiculoModel) {
-        return  veiculoService.cadastrarVeiculo(veiculoModel);
+    public Veiculo createVeiculo(@RequestBody Veiculo veiculo) {
+        return veiculoService.cadastrarVeiculo(veiculo);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteVeiculo(@PathVariable("id") Long id) {
         veiculoService.deletarVeiculo(id);
+    }
+
+    @PutMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    public Veiculo atualiarVeiculo(@RequestBody Veiculo veiculo) {
+        return veiculoService.atulizarVeiculo(veiculo);
     }
 }
