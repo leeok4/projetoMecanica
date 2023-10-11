@@ -5,7 +5,9 @@ import com.mecanica.repositories.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicoService {
@@ -17,23 +19,25 @@ public class ServicoService {
         this.servicoRepository = servicoRepository;
     }
 
-    public List<Servico> getAll(){
+    public List<Servico> getAllServico(){
         return servicoRepository.findAll();
     }
 
-    public Servico findById (Servico servico){
-        return servicoRepository.findById(servico.getId()).get();
+    public Optional<Servico> findByIdServico (Long id){
+        return servicoRepository.findById(id);
     }
 
-    public Servico create (Servico servico){
+    public Servico createServico (Servico servico){
         return servicoRepository.save(servico);
     }
 
-    public Servico update (Servico servico){
+    public Servico updateServico (Servico servico){
         return servicoRepository.save(servico);
     }
 
-    public void delete (Long id){
+    public void deleteServico (Long id){
         servicoRepository.deleteById(id);
     }
+
+
 }

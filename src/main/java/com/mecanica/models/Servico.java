@@ -10,32 +10,28 @@ public class Servico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String nome;
-    @ManyToOne
-    @JoinColumn(name = "clienteId")
-    private Cliente cliente;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "veiculoId", nullable = false)
-    private Veiculo veiculo;
+
+    @Column(nullable = false)
     private Boolean isRecorrente;
+    @Column(nullable = false)
     private String descricao;
+    @Column(nullable = false)
     private Double Valor;
-    private Date dataInicial;
-    private Date tempoExecucao;
+    private String tempoExecucao;
+    @Column(nullable = false)
     private String observacao;
 
     public Servico() {
     }
 
-    public Servico(Long id, String nome, Cliente cliente, Veiculo veiculo, Boolean isRecorrente, String descricao, Double valor, Date tempoExecucao, String observacao) {
+    public Servico(Long id, String nome, Boolean isRecorrente, String descricao, Double valor, String tempoExecucao, String observacao) {
         this.id = id;
         this.nome = nome;
-        this.cliente = cliente;
-        this.veiculo = veiculo;
         this.isRecorrente = isRecorrente;
         this.descricao = descricao;
         Valor = valor;
-        this.dataInicial = new Date();
         this.tempoExecucao = tempoExecucao;
         this.observacao = observacao;
     }
@@ -56,28 +52,12 @@ public class Servico {
         this.nome = nome;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public Boolean getisRecorrente() {
+    public Boolean getIsRecorrente() {
         return isRecorrente;
     }
 
-    public void setisRecorrente(Boolean isRecorrente) {
-        this.isRecorrente = isRecorrente;
+    public void setIsRecorrente(Boolean recorrente) {
+        isRecorrente = recorrente;
     }
 
     public String getDescricao() {
@@ -96,19 +76,11 @@ public class Servico {
         Valor = valor;
     }
 
-    public Date getDataInicial() {
-        return dataInicial;
-    }
-
-    public void setDataInicial(Date dataInicial) {
-        this.dataInicial = dataInicial;
-    }
-
-    public Date getTempoExecucao() {
+    public String getTempoExecucao() {
         return tempoExecucao;
     }
 
-    public void setTempoExecucao(Date tempoExecucao) {
+    public void setTempoExecucao(String tempoExecucao) {
         this.tempoExecucao = tempoExecucao;
     }
 
